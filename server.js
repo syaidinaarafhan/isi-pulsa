@@ -3,13 +3,6 @@ if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }
 
-console.log('🔍 Environment check:');
-console.log('NODE_ENV:', process.env.NODE_ENV);
-console.log('PORT:', process.env.PORT);
-console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
-console.log('JSON_WEB_TOKEN exists:', !!process.env.JSON_WEB_TOKEN);
-console.log('CLOUDINARY_URL exists:', !!process.env.CLOUDINARY_URL);
-
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';

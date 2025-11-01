@@ -477,7 +477,7 @@ router.put('/profile/image', authenticate, upload.single('file'), async (req, re
       });
     }
 
-    const updatedUser = await authService.updateProfileImageService(userId, imageFile);
+    const updatedUser = await authService.updateProfileImageService(userId, req.body, imageFile);
 
     return res.status(200).json({
       status: 0,

@@ -70,11 +70,15 @@ export const updateProfileImageService = async (userId, data, imageFile) => {
   try {
     let imageUrl = null;
 
-    if (imageFile) {
+    if (imageFile && imageFile.buffer) {
+      console.log('Uploading image to Cloudinary...');
+      
       const uploadResult = await uploadService.uploadImage(
         imageFile.buffer,
         'profiles'
       );
+      
+      console.log('Upload success:', uploadResult.secure_url);
       imageUrl = uploadResult.secure_url;
     }
 
@@ -83,21 +87,25 @@ export const updateProfileImageService = async (userId, data, imageFile) => {
     let paramCount = 1;
 
     if (data.first_name) {
-      updates.push(`"first_name" = $${paramCount}`);
+      updates.push(`first_name = $${paramCount}`);
       values.push(data.first_name);
       paramCount++;
     }
 
     if (data.last_name) {
-      updates.push(`"last_name" = $${paramCount}`);
+      updates.push(`last_name = $${paramCount}`);
       values.push(data.last_name);
       paramCount++;
     }
 
     if (imageUrl) {
-      updates.push(`"profile_image" = $${paramCount}`);
+      updates.push(`profile_image = $${paramCount}`);
       values.push(imageUrl);
       paramCount++;
+    }
+
+    if (updates.length === 0) {
+      throw new Error('No fields to update');
     }
 
     updates.push(`"updatedAt" = NOW()`);
@@ -105,9 +113,16 @@ export const updateProfileImageService = async (userId, data, imageFile) => {
 
     const query = `UPDATE "User" SET ${updates.join(', ')} WHERE id = $${paramCount} RETURNING *`;
     
+    
     const result = await db.query(query, values);
+    
+    if (result.rows.length === 0) {
+      throw new Error('User not found');
+    }
+    
     return result.rows[0];
   } catch (error) {
+    console.error('Update profile error:', error);
     throw error;
   }
 };
