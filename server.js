@@ -10,7 +10,8 @@ console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
 console.log('JSON_WEB_TOKEN exists:', !!process.env.JSON_WEB_TOKEN);
 console.log('CLOUDINARY_URL exists:', !!process.env.CLOUDINARY_URL);
 
-
+import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 import authRouter from './src/auth/auth.controller.js'
 import informationRouter from './src/information/info.controller.js';

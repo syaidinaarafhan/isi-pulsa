@@ -1,6 +1,8 @@
 import passport from "passport";
 import pkg from "passport-jwt";
 import db from "../config/dbHelper.js";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const { Strategy: JwtStrategy, ExtractJwt } = pkg;
 
