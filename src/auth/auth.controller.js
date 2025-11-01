@@ -227,8 +227,6 @@ router.post('/login', async (req, res) => {
  *   get:
  *     tags:
  *       - 1. Module Membership
- *     security:
- *       - bearerAuth: []
  *     description: |
  *       Endpoint ini digunakan untuk mendapatkan informasi profil user yang sedang login.  
  *       **Memerlukan Bearer Token (JWT)** untuk mengaksesnya.
