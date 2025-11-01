@@ -11,7 +11,6 @@ const router = express.Router();
  *   post:
  *     tags:
  *       - 1. Module Membership
- *     summary: Registrasi user baru
  *     description: |
  *       Endpoint ini digunakan untuk melakukan registrasi user baru agar dapat login ke dalam aplikasi.  
  *       **Tidak memerlukan Token.**
@@ -123,7 +122,6 @@ router.post('/register', async (req, res) => {
  *   post:
  *     tags:
  *       - 1. Module Membership
- *     summary: Login user
  *     description: |
  *       Endpoint ini digunakan untuk melakukan login dan mendapatkan authentication berupa **JWT (JSON Web Token)**.  
  *       **Tidak memerlukan Token untuk mengaksesnya.**
@@ -229,7 +227,8 @@ router.post('/login', async (req, res) => {
  *   get:
  *     tags:
  *       - 1. Module Membership
- *     summary: Mendapatkan informasi profil user
+ *     security:
+ *       - bearerAuth: []
  *     description: |
  *       Endpoint ini digunakan untuk mendapatkan informasi profil user yang sedang login.  
  *       **Memerlukan Bearer Token (JWT)** untuk mengaksesnya.
@@ -294,7 +293,6 @@ router.get('/profile', authenticate, async (req, res) => {
  *   put:
  *     tags:
  *       - 1. Module Membership
- *     summary: Update data profil user
  *     description: |
  *       Endpoint ini digunakan untuk mengupdate data profil user yang sedang login.  
  *       **Memerlukan Bearer Token (JWT)** untuk mengaksesnya.  
@@ -394,7 +392,6 @@ router.put('/profile/update', authenticate, async (req, res) => {
  *   put:
  *     tags:
  *       - 1. Module Membership
- *     summary: Upload atau update profile image user
  *     description: |
  *       Endpoint ini digunakan untuk mengupload atau mengupdate foto profil user.  
  *       **Memerlukan Bearer Token (JWT)** untuk mengaksesnya.  

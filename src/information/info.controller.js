@@ -10,7 +10,6 @@ const router = express.Router();
  *   get:
  *     tags:
  *       - 2. Module Information
- *     summary: Mendapatkan list banner
  *     description: |
  *       Endpoint ini digunakan untuk mendapatkan daftar banner yang tersedia.  
  *       **Tidak memerlukan Token untuk mengaksesnya.**
@@ -82,7 +81,6 @@ router.get('/banner', async (req, res) => {
  *   get:
  *     tags:
  *       - 2. Module Information
- *     summary: Mendapatkan list Service atau Layanan PPOB
  *     description: |
  *       Endpoint ini digunakan untuk mendapatkan daftar layanan (Service) PPOB.  
  *       **Memerlukan Bearer Token (JWT)** untuk mengaksesnya.

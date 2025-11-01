@@ -10,7 +10,6 @@ const router = express.Router();
  *   get:
  *     tags:
  *       - 3. Module Transaction
- *     summary: Mendapatkan informasi saldo user
  *     description: |
  *       Endpoint ini digunakan untuk mendapatkan informasi **balance / saldo terakhir** dari user yang sedang login.  
  *       **Memerlukan Bearer Token (JWT)** untuk mengaksesnya.
@@ -65,7 +64,6 @@ router.get('/getBalance', authenticate, async (req, res) => {
  *   post:
  *     tags:
  *       - 3. Module Transaction
- *     summary: Melakukan Top Up saldo user
  *     description: |
  *       Endpoint ini digunakan untuk melakukan **Top Up balance / saldo** dari user.  
  *       **Memerlukan Bearer Token (JWT)** untuk mengaksesnya.
@@ -173,7 +171,6 @@ router.post('/topup', authenticate, async (req, res) => {
  *   post:
  *     tags:
  *       - 3. Module Transaction
- *     summary: Melakukan transaksi pembayaran layanan
  *     description: |
  *       Endpoint ini digunakan untuk melakukan transaksi dari service / layanan yang tersedia.  
  *       **Memerlukan Bearer Token (JWT)** untuk mengaksesnya.
@@ -292,7 +289,6 @@ router.post('/transaction', authenticate, async (req, res) => {
  *   get:
  *     tags:
  *       - 3. Module Transaction
- *     summary: Mendapatkan riwayat transaksi user
  *     description: |
  *       Endpoint ini digunakan untuk mendapatkan informasi **history transaksi** dari user yang sedang login.  
  *       **Memerlukan Bearer Token (JWT)** untuk mengaksesnya.
