@@ -1,12 +1,14 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import authRouter from './src/auth/auth.controller.js'
 import informationRouter from './src/information/info.controller.js';
 import transactionRouter from './src/transaction/transaction.controller.js';
 import { swaggerMiddleware } from './src/lib/swagger.js';
 import passport from 'passport';
 
-dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
+  const dotenv = await import('dotenv');
+  dotenv.config();
+}
 
 const app = express();
 
